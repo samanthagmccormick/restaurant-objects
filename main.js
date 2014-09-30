@@ -15,7 +15,7 @@ FoodItem.prototype.toString = function() {
 	'Calories: ' + this.calories + '\n' +
 	'Vegan: ' + this.vegan + '\n' +
 	'Gluten Free: ' + this.glutenFree + '\n' +
-	'Citrus Free: ' + this.citrusFree + '\n'
+	'Citrus Free: ' + this.citrusFree 
 	);
 };
 //////////////////////
@@ -41,15 +41,19 @@ Drink.prototype.toString = function() {
 	var ingredientNames = '\n';
 
 	for(var i = 0; i < this.ingredients.length; i++) {
-		var ingredientNames = ingredientNames + this.ingredients[i].name + '\n';
+		var ingredientNames = ingredientNames + this.ingredients[i].name + ' ';
 	}
 
 	return (
-	'*' + this.name + '*\n' + 
+	'\n*' + this.name + '*\n' + 
 	'Description: ' + this.description + '\n' +
 	'Price: $' + this.price + '\n' +
-	'Ingredients:' + ingredientNames + '\n'
-	)
+	'Ingredients:' + ingredientNames + '\n' +
+	'Dietary Info: ' + '\n' + 
+	'Vegan? ' + this.isVegan() + '\n' + 
+	'Gluten Free? ' + this.isGlutenFree() + '\n' + 
+	'Citrus Free? ' + this.isCitrusFree() + '\n'
+	);
 };
 
 Drink.prototype.isVegan = function() {
@@ -89,15 +93,19 @@ Plate.prototype.toString = function() {
 	var ingredientNames = '\n';
 
 	for(var i = 0; i < this.ingredients.length; i++) {
-		var ingredientNames = ingredientNames + this.ingredients[i].name + '\n';
+		var ingredientNames = ingredientNames + this.ingredients[i].name + ' ';
 	};
 
 	return (
-	'*' + this.name + '*\n' + 
+	'\n*' + this.name + '*\n' + 
 	'Description: ' + this.description + '\n' +
 	'Price: $' + this.price + '\n' +
-	'Ingredients: ' + ingredientNames + '\n'
-	)
+	'Ingredients: ' + ingredientNames + '\n' +
+	'Dietary Info: ' + '\n' + 
+	'Vegan? ' + this.isVegan() + '\n' + 
+	'Gluten Free? ' + this.isGlutenFree() + '\n' + 
+	'Citrus Free? ' + this.isCitrusFree() + '\n'
+	);
 };
 
 Plate.prototype.isVegan = function() {
@@ -187,33 +195,28 @@ var garlic = new FoodItem('Garlic', 19, true, true, true);
 var margaritaIngredients = [tequila, lime];
 
 var margarita = new Drink('Margarita', 'Awesome bev', 4.99, margaritaIngredients);
-console.log(margarita.toString());
 
 //////// BURRITO
 
 var burritoIngredients = [beans, cheese];
 
 var burritoPlate = new Plate('Burrito Plate', 'Cheesy fatness', 6.99, burritoIngredients);
-console.log(burritoPlate.toString());
 
 /////// CHEESEBURGER
 
 var garbageBurgerIngredients = [cheese, meat];
 
 var garbageBurgerPlate = new Plate('Garbage Burger Plate', 'Also delicious', 5.99, garbageBurgerIngredients);
-console.log(garbageBurgerPlate.toString());
 
 ////////// GUACAMOLE
 
 var guacamoleIngredients = [avocado, garlic];
 
 var guacamolePlate = new Plate('Guac Plate', 'Really creamy', 8.99, guacamoleIngredients);
-console.log( guacamolePlate.toString() ); 
 
 ///////// MENU
 
 var myMenu = [margarita, burritoPlate, guacamolePlate];
-console.log( myMenu.toString() );
 
 //////// RESTAURANT
 
@@ -224,12 +227,6 @@ console.log(myRestaurant.toString());
 
 var myCustomer = new Customer('Gluten Free');
 console.log(myCustomer.toString());
-
-////////// DIETARY TESTS
-
-console.log( 'Is garbage burger vegan? ' + garbageBurgerPlate.isVegan() );
-console.log( 'Is burritoPlate gluten free? ' + burritoPlate.isGlutenFree() );
-console.log( 'Is margarita citrus free? ' + margarita.isCitrusFree() );
 
 
 
